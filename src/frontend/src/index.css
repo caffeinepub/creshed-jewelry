@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Figtree:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  ============================================================
+  CRUSHED JEWELRY — Design Tokens
+  Light theme: blush pink background, deep black text,
+  warm yellow gold accents.
+  ============================================================
+*/
+@layer base {
+  :root {
+    /* Background: soft blush white */
+    --background: 0.97 0.008 355;
+    /* Foreground: deep black */
+    --foreground: 0.15 0.01 30;
+
+    /* Card: pure white */
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.01 30;
+
+    /* Popover */
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.01 30;
+
+    /* Primary: warm gold */
+    --primary: 0.72 0.14 75;
+    --primary-foreground: 0.15 0.01 30;
+
+    /* Secondary: blush pink */
+    --secondary: 0.93 0.025 355;
+    --secondary-foreground: 0.15 0.01 30;
+
+    /* Muted */
+    --muted: 0.93 0.015 355;
+    --muted-foreground: 0.48 0.02 30;
+
+    /* Accent: light gold tint */
+    --accent: 0.95 0.03 80;
+    --accent-foreground: 0.15 0.01 30;
+
+    /* Destructive */
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 1 0 0;
+
+    /* Border & Input */
+    --border: 0.88 0.02 355;
+    --input: 0.88 0.02 355;
+    --ring: 0.72 0.14 75;
+
+    /* Border radius */
+    --radius: 0.25rem;
+
+    /* Chart colors */
+    --chart-1: 0.72 0.14 75;
+    --chart-2: 0.65 0.12 355;
+    --chart-3: 0.55 0.1 200;
+    --chart-4: 0.75 0.12 120;
+    --chart-5: 0.6 0.15 30;
+
+    /* Sidebar */
+    --sidebar: 0.97 0.008 355;
+    --sidebar-foreground: 0.15 0.01 30;
+    --sidebar-primary: 0.72 0.14 75;
+    --sidebar-primary-foreground: 0.15 0.01 30;
+    --sidebar-accent: 0.93 0.025 355;
+    --sidebar-accent-foreground: 0.15 0.01 30;
+    --sidebar-border: 0.88 0.02 355;
+    --sidebar-ring: 0.72 0.14 75;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+/*
+  ============================================================
+  UTILITY CLASSES
+  ============================================================
+*/
+@layer utilities {
+  /* Warm gold text color */
+  .text-gold {
+    color: oklch(0.62 0.14 75);
+  }
+
+  /* Gold gradient background for CTAs */
+  .gold-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.75 0.14 80) 0%,
+      oklch(0.62 0.14 70) 100%
+    );
+  }
+
+  /* Blush pink section background */
+  .bg-blush {
+    background-color: oklch(0.94 0.025 355);
+  }
+
+  /* Subtle gold border */
+  .border-gold {
+    border-color: oklch(0.72 0.14 75);
+  }
+}

@@ -80,18 +80,18 @@ export default function ContactPage() {
               {
                 icon: Phone,
                 label: "Phone",
-                value: "+1 (212) 555-0172",
-                href: "tel:+12125550172",
+                value: "+91 70118 35049",
+                href: "tel:+917011835049",
               },
               {
                 icon: MapPin,
-                label: "Atelier",
-                value: "142 Bond Street\nLondon, W1S 2TH",
+                label: "Location",
+                value: "India",
               },
               {
                 icon: Clock,
                 label: "Hours",
-                value: "Mon–Sat: 10am–7pm\nSunday: 11am–5pm",
+                value: "Mon–Sat: 10am–7pm IST",
               },
             ].map(({ icon: Icon, label, value, href }) => (
               <motion.div
