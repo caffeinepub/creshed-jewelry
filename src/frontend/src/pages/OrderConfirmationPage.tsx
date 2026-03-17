@@ -8,7 +8,7 @@ export default function OrderConfirmationPage() {
   const [order, setOrder] = useState<Order | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("creshed_last_order");
+    const saved = localStorage.getItem("crushed_last_order");
     if (saved) {
       setOrder(JSON.parse(saved) as Order);
     }

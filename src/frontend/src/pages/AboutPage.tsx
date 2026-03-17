@@ -18,25 +18,25 @@ const values = [
     icon: Heart,
     title: "Timeless Elegance",
     description:
-      "We reject the ephemeral nature of fast fashion. Creshed pieces are designed to transcend trends — heirlooms in the making, crafted to be passed down through generations.",
+      "We reject the ephemeral nature of fast fashion. Crushed pieces are designed to transcend trends — heirlooms in the making, crafted to be passed down through generations.",
   },
 ];
 
 const team = [
   {
-    name: "Amara Creshed",
+    name: "Amara Crushed",
     title: "Founder & Creative Director",
-    bio: "With a background in classical goldsmithing and a decade spent in the ateliers of Paris and Milan, Amara founded Creshed in 2018 with a singular vision: to create jewellery that speaks.",
+    bio: "With a background in classical goldsmithing and a decade spent in the ateliers of Paris and Milan, Amara founded Crushed in 2026 with a singular vision: to create jewellery that speaks.",
   },
   {
     name: "Olivier Marceau",
     title: "Head Goldsmith",
-    bio: "Trained at the École de Joaillerie de Paris, Olivier brings 25 years of expertise to Creshed. His exacting standards and quiet passion for perfection define every piece we create.",
+    bio: "Trained at the École de Joaillerie de Paris, Olivier brings 25 years of expertise to Crushed. His exacting standards and quiet passion for perfection define every piece we create.",
   },
   {
     name: "Sophia Laurent",
     title: "Gemologist & Buyer",
-    bio: "A certified GIA gemologist, Sophia travels the world in search of the finest stones. Her refined eye ensures that only the most exceptional gems find their way into Creshed pieces.",
+    bio: "A certified GIA gemologist, Sophia travels the world in search of the finest stones. Her refined eye ensures that only the most exceptional gems find their way into Crushed pieces.",
   },
 ];
 
@@ -48,8 +48,8 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card/80" />
         <div className="absolute right-0 top-0 w-1/2 h-full">
           <img
-            src="/assets/generated/creshed-about-founder.dim_800x600.jpg"
-            alt="Creshed Story"
+            src="/assets/generated/crushed-about-founder.dim_800x600.jpg"
+            alt="Crushed Story"
             className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent" />
@@ -80,7 +80,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-muted-foreground leading-relaxed text-lg"
             >
-              Creshed was founded in 2018 with a single, unwavering conviction:
+              Crushed was founded in 2026 with a single, unwavering conviction:
               that jewellery should be more than decoration. It should be a form
               of self-expression, a mark of one's story, and a gift to future
               generations.
@@ -99,7 +99,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-lg"
           >
-            The name Creshed comes from an ancient word meaning "to adorn with
+            The name Crushed comes from an ancient word meaning "to adorn with
             intention." It captures our founding philosophy: that the act of
             choosing a piece of jewellery is never accidental. It is a
             declaration.
@@ -121,7 +121,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Each Creshed piece takes between 40 and 200 hours to create,
+            Each Crushed piece takes between 40 and 200 hours to create,
             depending on its complexity. We use only 18k gold and platinum,
             paired with gemstones selected individually for their exceptional
             character. Nothing is mass-produced. Everything is made to last.
@@ -137,7 +137,7 @@ export default function AboutPage() {
             "We do not make jewellery. We create memories that can be worn."
           </blockquote>
           <p className="mt-5 text-sm tracking-[0.3em] uppercase text-gold">
-            — Amara Creshed
+            — Amara Crushed
           </p>
         </div>
       </section>

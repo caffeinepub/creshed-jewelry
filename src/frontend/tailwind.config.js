@@ -16,9 +16,11 @@ export default {
     },
     extend: {
       fontFamily: {
+        // Playfair Display — elegant editorial serif for headings
         display: ["'Playfair Display'", "Georgia", "serif"],
-        body: ["'General Sans'", "sans-serif"],
-        sans: ["'General Sans'", "sans-serif"],
+        // Figtree — friendly open sans with round terminals for body
+        body: ["'Figtree'", "sans-serif"],
+        sans: ["'Figtree'", "sans-serif"],
       },
       colors: {
         border: "oklch(var(--border))",
@@ -78,7 +80,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
+        xs: "0 1px 2px 0 rgba(0,0,0,0.04)",
+        // Soft pink glow shadow
+        petal: "0 4px 24px 0 oklch(0.65 0.12 355 / 0.12)",
       },
       keyframes: {
         "accordion-down": {

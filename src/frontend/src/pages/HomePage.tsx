@@ -64,15 +64,16 @@ export default function HomePage() {
         <div className="absolute inset-0">
           <img
             src="/assets/generated/hero-jewelry.dim_1600x900.jpg"
-            alt="Creshed Jewelry Collection"
+            alt="Crushed Jewelry Collection"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/90" />
+          {/* Lighter overlay for light theme — keeps image visible */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background/70" />
         </div>
 
-        {/* Decorative gold lines */}
-        <div className="absolute left-8 top-1/3 w-px h-24 bg-gradient-to-b from-transparent via-gold to-transparent opacity-40" />
-        <div className="absolute right-8 top-1/2 w-px h-32 bg-gradient-to-b from-transparent via-gold to-transparent opacity-30" />
+        {/* Decorative pink lines */}
+        <div className="absolute left-8 top-1/3 w-px h-24 bg-gradient-to-b from-transparent via-primary to-transparent opacity-50" />
+        <div className="absolute right-8 top-1/2 w-px h-32 bg-gradient-to-b from-transparent via-primary to-transparent opacity-40" />
 
         {/* Content */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
@@ -82,7 +83,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xs tracking-[0.5em] uppercase text-gold mb-6 font-body"
           >
-            Fine Jewellery · Est. 2018
+            Fine Jewellery · Est. 2026
           </motion.p>
 
           <motion.h1
@@ -91,10 +92,11 @@ export default function HomePage() {
             transition={{ duration: 0.9, delay: 0.4 }}
             className="font-display font-medium leading-[1.0] mb-8"
           >
-            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight">
+            {/* Main headline in foreground (deep charcoal) for legibility on light bg */}
+            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-foreground drop-shadow-sm">
               Adorn Yourself
             </span>
-            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[7rem] italic text-gold leading-[0.95] mt-1 hero-italic-gold">
+            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-[7rem] italic text-gold leading-[0.95] mt-1 hero-italic-gold drop-shadow-sm">
               in Elegance
             </span>
           </motion.h1>
@@ -103,7 +105,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-foreground/85 text-base sm:text-lg max-w-sm mx-auto mb-10 leading-relaxed tracking-wide"
+            className="text-foreground/80 text-base sm:text-lg max-w-sm mx-auto mb-10 leading-relaxed tracking-wide"
           >
             Timeless pieces for those who seek the exceptional. Each jewel tells
             a story of artistry and devotion.
@@ -118,7 +120,7 @@ export default function HomePage() {
             <Link
               to="/shop"
               data-ocid="hero.shop_button"
-              className="group inline-flex items-center gap-2 gold-gradient text-background px-8 py-3.5 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
+              className="group inline-flex items-center gap-2 gold-gradient text-white px-8 py-3.5 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity shadow-sm"
             >
               Shop Now
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -126,7 +128,7 @@ export default function HomePage() {
             <Link
               to="/about"
               data-ocid="hero.story_button"
-              className="inline-flex items-center gap-2 border border-foreground/30 text-foreground px-8 py-3.5 text-sm tracking-widest uppercase hover:border-gold hover:text-gold transition-colors"
+              className="inline-flex items-center gap-2 border border-foreground/30 text-foreground bg-background/60 backdrop-blur-sm px-8 py-3.5 text-sm tracking-widest uppercase hover:border-primary hover:text-gold transition-colors"
             >
               Our Story
             </Link>
@@ -140,13 +142,13 @@ export default function HomePage() {
           transition={{ duration: 1, delay: 1.5 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/30">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/40">
             Scroll
           </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-            className="w-px h-8 bg-gradient-to-b from-gold/50 to-transparent"
+            className="w-px h-8 bg-gradient-to-b from-primary/60 to-transparent"
           />
         </motion.div>
       </section>
@@ -233,7 +235,8 @@ export default function HomePage() {
                     alt={cat.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                  {/* Lighter gradient overlay for legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/75 via-background/15 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <h3 className="font-display text-xl font-medium text-foreground group-hover:text-gold transition-colors">
                       {cat.name}
@@ -251,8 +254,8 @@ export default function HomePage() {
 
       {/* Brand Quote */}
       <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Decorative element */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-3xl pointer-events-none" />
+        {/* Decorative soft pink bloom */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/8 blur-3xl pointer-events-none" />
 
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <motion.div
@@ -279,7 +282,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-6 text-sm tracking-[0.3em] uppercase text-gold"
           >
-            — Amara Creshed, Founder
+            — Amara Crushed, Founder
           </motion.p>
         </div>
       </section>
@@ -305,7 +308,7 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xs tracking-[0.3em] uppercase text-gold hidden sm:block"
             >
-              The Creshed Standard
+              The Crushed Standard
             </motion.p>
           </div>
 
@@ -320,7 +323,7 @@ export default function HomePage() {
                 className="group grid grid-cols-[4rem_1fr] sm:grid-cols-[5rem_1fr_2fr] gap-6 sm:gap-12 py-8 items-start"
               >
                 {/* Number */}
-                <span className="font-display text-4xl sm:text-5xl font-medium text-gold/20 group-hover:text-gold/50 transition-colors duration-500 leading-none mt-1 select-none">
+                <span className="font-display text-4xl sm:text-5xl font-medium text-gold/20 group-hover:text-gold/40 transition-colors duration-500 leading-none mt-1 select-none">
                   0{idx + 1}
                 </span>
                 {/* Title */}

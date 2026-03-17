@@ -74,8 +74,8 @@ export default function ContactPage() {
               {
                 icon: Mail,
                 label: "Email",
-                value: "hello@creshed.com",
-                href: "mailto:hello@creshed.com",
+                value: "hello@crushed.com",
+                href: "mailto:hello@crushed.com",
               },
               {
                 icon: Phone,

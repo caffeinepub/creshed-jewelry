@@ -22,16 +22,17 @@ export default function Header() {
   const isLoggedIn = !!identity;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+    // Light background header with a soft pink border at bottom
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+          {/* Logo — pink rose colour via .text-gold utility */}
           <Link
             to="/"
             data-ocid="nav.home_link"
-            className="font-display text-xl lg:text-2xl tracking-[0.25em] text-gold font-semibold hover:opacity-80 transition-opacity"
+            className="font-display text-xl lg:text-2xl tracking-[0.25em] text-gold font-semibold hover:opacity-75 transition-opacity"
           >
-            CRESHED
+            CRUSHED
           </Link>
 
           {/* Desktop Nav */}
@@ -48,7 +49,7 @@ export default function Header() {
                   }`}
                 >
                   {link.label}
-                  {/* Active indicator — thin gold rule */}
+                  {/* Active indicator — thin pink rule */}
                   <span
                     className={`absolute inset-x-0 -bottom-0.5 h-px bg-gold transition-transform duration-300 origin-left ${
                       isActive
@@ -67,14 +68,14 @@ export default function Header() {
             <Link
               to="/cart"
               data-ocid="nav.cart_button"
-              className="relative p-2 hover:text-gold transition-colors"
+              className="relative p-2 text-foreground/70 hover:text-gold transition-colors"
             >
               <ShoppingBag className="w-5 h-5" />
               {totalItems > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full gold-gradient text-[10px] font-bold text-background flex items-center justify-center"
+                  className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full gold-gradient text-[10px] font-bold text-white flex items-center justify-center"
                 >
                   {totalItems > 9 ? "9+" : totalItems}
                 </motion.span>
@@ -87,7 +88,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setUserOpen((v) => !v)}
                 data-ocid="nav.account_link"
-                className="p-2 hover:text-gold transition-colors flex items-center gap-1"
+                className="p-2 text-foreground/70 hover:text-gold transition-colors flex items-center gap-1"
               >
                 <User className="w-5 h-5" />
                 {isLoggedIn && <ChevronDown className="w-3 h-3 opacity-60" />}
@@ -99,21 +100,21 @@ export default function Header() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
-                    className="absolute right-0 top-full mt-2 w-48 bg-card border border-border shadow-2xl py-1"
+                    className="absolute right-0 top-full mt-2 w-48 bg-card border border-border shadow-lg py-1"
                     onBlur={() => setUserOpen(false)}
                   >
                     {isLoggedIn ? (
                       <>
                         <Link
                           to="/account"
-                          className="block px-4 py-2.5 text-sm hover:bg-muted transition-colors"
+                          className="block px-4 py-2.5 text-sm hover:bg-secondary transition-colors"
                           onClick={() => setUserOpen(false)}
                         >
                           My Account
                         </Link>
                         <Link
                           to="/admin"
-                          className="block px-4 py-2.5 text-sm hover:bg-muted transition-colors"
+                          className="block px-4 py-2.5 text-sm hover:bg-secondary transition-colors"
                           onClick={() => setUserOpen(false)}
                         >
                           Admin Panel
@@ -125,7 +126,7 @@ export default function Header() {
                             clear();
                             setUserOpen(false);
                           }}
-                          className="w-full text-left px-4 py-2.5 text-sm text-destructive hover:bg-muted transition-colors"
+                          className="w-full text-left px-4 py-2.5 text-sm text-destructive hover:bg-secondary transition-colors"
                         >
                           Sign Out
                         </button>
@@ -138,7 +139,7 @@ export default function Header() {
                           setUserOpen(false);
                         }}
                         disabled={isLoggingIn}
-                        className="w-full text-left px-4 py-2.5 text-sm hover:bg-muted transition-colors"
+                        className="w-full text-left px-4 py-2.5 text-sm hover:bg-secondary transition-colors"
                       >
                         {isLoggingIn ? "Signing in..." : "Sign In"}
                       </button>
@@ -152,7 +153,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMobileOpen((v) => !v)}
-              className="lg:hidden p-2 hover:text-gold transition-colors"
+              className="lg:hidden p-2 text-foreground/70 hover:text-gold transition-colors"
             >
               {mobileOpen ? (
                 <X className="w-5 h-5" />
@@ -171,7 +172,7 @@ export default function Header() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden bg-card border-t border-border overflow-hidden"
+            className="lg:hidden bg-background border-t border-border overflow-hidden shadow-md"
           >
             <div className="px-4 py-4 space-y-1">
               {NAV_LINKS.map((link) => (
@@ -215,7 +216,7 @@ export default function Header() {
                       setMobileOpen(false);
                     }}
                     disabled={isLoggingIn}
-                    className="border-gold text-gold hover:bg-gold hover:text-background"
+                    className="border-gold text-gold hover:bg-primary hover:text-white"
                   >
                     {isLoggingIn ? "Signing in..." : "Sign In"}
                   </Button>

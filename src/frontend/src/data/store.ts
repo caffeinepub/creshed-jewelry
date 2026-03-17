@@ -189,7 +189,7 @@ export const PRODUCTS: Product[] = [
     id: "p010",
     name: "Lumière Collection Set",
     description:
-      "The complete Lumière collection — a matching necklace, earrings, and bracelet in 18k gold. Presented in Creshed's signature black lacquer box, perfect as an exceptional gift.",
+      "The complete Lumière collection — a matching necklace, earrings, and bracelet in 18k gold. Presented in Crushed's signature black lacquer box, perfect as an exceptional gift.",
     price: 695000,
     category: "sets",
     images: ["/assets/generated/jewelry-set-gold.dim_600x600.jpg"],
@@ -263,6 +263,59 @@ export const PRODUCTS: Product[] = [
     featured: true,
     material: "18k Gold Plate, Crystal",
     badge: "New",
+  },
+  // ─── New Men's Collection ───────────────────────────────────────────────────
+  {
+    id: "p016",
+    name: "Reaper Skull Ring",
+    description:
+      "A commanding gothic skull ring hand-sculpted in oxidised sterling silver with a deep black onyx inset. The intricate bone detailing makes this a true statement piece for the bold.",
+    price: 9800,
+    category: "mens",
+    images: ["/assets/generated/mens-skull-ring.dim_600x600.jpg"],
+    stock: 12,
+    featured: true,
+    material: "Sterling Silver, Black Onyx",
+    badge: "Gothic",
+  },
+  {
+    id: "p017",
+    name: "Dragon Fire Pendant",
+    description:
+      "A heavyweight oxidised silver dragon pendant with fiery red garnet eyes, suspended on a thick curb chain. Inspired by ancient mythology, crafted for the modern warrior.",
+    price: 14500,
+    category: "mens",
+    images: ["/assets/generated/mens-dragon-pendant.dim_600x600.jpg"],
+    stock: 8,
+    featured: true,
+    material: "Oxidised Silver, Garnet",
+    badge: "New",
+  },
+  {
+    id: "p018",
+    name: "Shadow Stack Ring Set",
+    description:
+      "A trio of men's stacking rings — a polished plain band, a black diamond-encrusted band, and a geometric engraved band. Mix and match for a custom layered look.",
+    price: 18500,
+    category: "mens",
+    images: ["/assets/generated/mens-stacking-rings.dim_600x600.jpg"],
+    stock: 10,
+    featured: false,
+    material: "Sterling Silver, Black Diamonds",
+    badge: "Set of 3",
+  },
+  {
+    id: "p019",
+    name: "Outlaw Leather Bracelet",
+    description:
+      "A rugged hand-braided black leather bracelet with a chunky sterling silver skull charm and double-locking clasp. Built for everyday wear with an edge that doesn't soften.",
+    price: 6200,
+    category: "mens",
+    images: ["/assets/generated/mens-leather-bracelet.dim_600x600.jpg"],
+    stock: 18,
+    featured: false,
+    material: "Leather, Sterling Silver",
+    badge: "Bestseller",
   },
 ];
 
@@ -341,7 +394,7 @@ type CartContextType = {
 
 const CartContext = createContext<CartContextType | null>(null);
 
-const CART_STORAGE_KEY = "creshed_cart";
+const CART_STORAGE_KEY = "crushed_cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
@@ -411,7 +464,7 @@ export function useCart() {
 
 // ─── Orders ──────────────────────────────────────────────────────────────────
 
-const ORDERS_STORAGE_KEY = "creshed_orders";
+const ORDERS_STORAGE_KEY = "crushed_orders";
 
 export function getOrders(): Order[] {
   try {

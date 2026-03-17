@@ -20,7 +20,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
+// India is the primary market — listed first and set as default
 const COUNTRIES = [
+  "India",
   "United States",
   "United Kingdom",
   "Canada",
@@ -32,6 +34,47 @@ const COUNTRIES = [
   "Japan",
   "UAE",
   "Other",
+];
+
+// All 28 Indian states + 8 Union Territories
+const INDIA_STATES = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  // Union Territories
+  "Andaman & Nicobar Islands",
+  "Chandigarh",
+  "Dadra & Nagar Haveli and Daman & Diu",
+  "Delhi (NCT)",
+  "Jammu & Kashmir",
+  "Ladakh",
+  "Lakshadweep",
+  "Puducherry",
 ];
 
 export default function CheckoutPage() {
@@ -50,7 +93,7 @@ export default function CheckoutPage() {
     city: "",
     state: "",
     postalCode: "",
-    country: "United States",
+    country: "India", // default to India
   });
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<
@@ -80,6 +123,13 @@ export default function CheckoutPage() {
     if (!form.address.trim()) newErrors.address = "Required";
     if (!form.city.trim()) newErrors.city = "Required";
     if (!form.postalCode.trim()) newErrors.postalCode = "Required";
+    // Validate 6-digit PIN code when country is India
+    if (
+      form.country === "India" &&
+      form.postalCode &&
+      !/^[1-9][0-9]{5}$/.test(form.postalCode)
+    )
+      newErrors.postalCode = "Enter a valid 6-digit PIN code";
     if (!form.country) newErrors.country = "Required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -93,7 +143,7 @@ export default function CheckoutPage() {
     }
 
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1200)); // simulate processing
+    await new Promise((r) => setTimeout(r, 1200));
 
     const order = {
       id: generateOrderId(),
@@ -107,7 +157,7 @@ export default function CheckoutPage() {
     };
 
     saveOrder(order);
-    localStorage.setItem("creshed_last_order", JSON.stringify(order));
+    localStorage.setItem("crushed_last_order", JSON.stringify(order));
     clearCart();
     setSubmitting(false);
     navigate("/order-confirmation");
@@ -161,6 +211,8 @@ export default function CheckoutPage() {
     </div>
   );
 
+  const isIndia = form.country === "India";
+
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
@@ -202,7 +254,7 @@ export default function CheckoutPage() {
                 "Phone (optional)",
                 "checkout.phone_input",
                 "tel",
-                "+1 (555) 000-0000",
+                "+91 98765 43210",
               )}
             </div>
 
@@ -211,13 +263,54 @@ export default function CheckoutPage() {
               "Street Address",
               "checkout.address_input",
               "text",
-              "123 Gold Street, Apt 4",
+              "Flat / House No., Street, Area",
             )}
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {field("city", "City", "checkout.city_input")}
-              {field("state", "State / Province", "checkout.state_input")}
-              {field("postalCode", "Postal Code", "checkout.postal_input")}
+
+              {/* State — dropdown for India, text input for other countries */}
+              {isIndia ? (
+                <div>
+                  <Label className="text-xs tracking-[0.1em] uppercase text-muted-foreground mb-1.5 block">
+                    State / UT
+                  </Label>
+                  <Select
+                    value={form.state}
+                    onValueChange={(val) =>
+                      setForm((prev) => ({ ...prev, state: val }))
+                    }
+                  >
+                    <SelectTrigger
+                      data-ocid="checkout.state_select"
+                      className="bg-card border-border focus:border-gold"
+                    >
+                      <SelectValue placeholder="Select state" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-card border-border max-h-60">
+                      {INDIA_STATES.map((s) => (
+                        <SelectItem
+                          key={s}
+                          value={s}
+                          className="hover:bg-muted"
+                        >
+                          {s}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              ) : (
+                field("state", "State / Province", "checkout.state_input")
+              )}
+
+              {field(
+                "postalCode",
+                isIndia ? "PIN Code" : "Postal Code",
+                "checkout.postal_input",
+                "text",
+                isIndia ? "e.g. 400001" : "",
+              )}
             </div>
 
             {/* Country Select */}
@@ -227,9 +320,9 @@ export default function CheckoutPage() {
               </Label>
               <Select
                 value={form.country}
-                onValueChange={(val) =>
-                  setForm((prev) => ({ ...prev, country: val }))
-                }
+                onValueChange={(val) => {
+                  setForm((prev) => ({ ...prev, country: val, state: "" }));
+                }}
               >
                 <SelectTrigger
                   data-ocid="checkout.country_select"
@@ -317,6 +410,12 @@ export default function CheckoutPage() {
                   {shipping === 0 ? "Free" : formatPrice(shipping)}
                 </span>
               </div>
+              {/* Free shipping nudge for India */}
+              {shipping > 0 && isIndia && (
+                <p className="text-xs text-muted-foreground">
+                  Free shipping on orders above ₹50,000
+                </p>
+              )}
               <div className="border-t border-border pt-2.5 flex justify-between font-medium text-base">
                 <span>Total</span>
                 <span className="text-gold">{formatPrice(total)}</span>

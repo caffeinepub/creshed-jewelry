@@ -89,9 +89,9 @@ export default function ShopPage() {
     priceRange[1] < MAX_PRICE;
 
   return (
-    <div className="min-h-screen">
-      {/* Page Header */}
-      <div className="border-b border-border py-12 px-4 sm:px-6 lg:px-8 text-center">
+    <div className="min-h-screen bg-background">
+      {/* Page Header — soft pink tinted */}
+      <div className="border-b border-border py-12 px-4 sm:px-6 lg:px-8 text-center bg-secondary/40">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -124,8 +124,8 @@ export default function ShopPage() {
                 data-ocid="shop.filter.tab"
                 className={`px-4 py-1.5 text-xs tracking-widest uppercase transition-colors ${
                   selectedCategory === cat.value
-                    ? "bg-gold text-background"
-                    : "text-muted-foreground hover:text-foreground border border-border hover:border-foreground/40"
+                    ? "bg-primary text-white"
+                    : "text-muted-foreground hover:text-foreground border border-border hover:border-primary/40"
                 }`}
               >
                 {cat.label}
@@ -138,7 +138,7 @@ export default function ShopPage() {
             <button
               type="button"
               onClick={() => setFilterOpen((v) => !v)}
-              className="flex items-center gap-2 text-xs tracking-widest uppercase border border-border px-3 py-2 hover:border-gold hover:text-gold transition-colors lg:hidden"
+              className="flex items-center gap-2 text-xs tracking-widest uppercase border border-border px-3 py-2 hover:border-primary hover:text-gold transition-colors lg:hidden"
             >
               <SlidersHorizontal className="w-3.5 h-3.5" />
               Filters
@@ -149,7 +149,7 @@ export default function ShopPage() {
               <button
                 type="button"
                 onClick={() => setSortOpen((v) => !v)}
-                className="flex items-center gap-2 text-xs tracking-widest uppercase border border-border px-3 py-2 hover:border-gold hover:text-gold transition-colors"
+                className="flex items-center gap-2 text-xs tracking-widest uppercase border border-border px-3 py-2 hover:border-primary hover:text-gold transition-colors"
               >
                 {SORT_OPTIONS.find((o) => o.value === sortBy)?.label}
                 <ChevronDown className="w-3.5 h-3.5" />
@@ -160,7 +160,7 @@ export default function ShopPage() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
-                    className="absolute right-0 top-full mt-1 w-44 bg-card border border-border z-20"
+                    className="absolute right-0 top-full mt-1 w-44 bg-card border border-border z-20 shadow-md"
                   >
                     {SORT_OPTIONS.map((opt) => (
                       <button
@@ -170,7 +170,7 @@ export default function ShopPage() {
                           setSortBy(opt.value);
                           setSortOpen(false);
                         }}
-                        className={`w-full text-left px-4 py-2.5 text-xs hover:bg-muted transition-colors ${
+                        className={`w-full text-left px-4 py-2.5 text-xs hover:bg-secondary transition-colors ${
                           sortBy === opt.value ? "text-gold" : ""
                         }`}
                       >
@@ -213,7 +213,7 @@ export default function ShopPage() {
                       onClick={() => handleCategoryChange(cat.value)}
                       className={`w-full text-left text-sm py-1.5 transition-colors ${
                         selectedCategory === cat.value
-                          ? "text-gold"
+                          ? "text-gold font-medium"
                           : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
@@ -226,7 +226,7 @@ export default function ShopPage() {
                 </div>
               </div>
 
-              {/* Price Range — displays values in INR using formatPrice */}
+              {/* Price Range — displays values in INR */}
               <div>
                 <h3 className="text-xs tracking-[0.2em] uppercase text-gold mb-4">
                   Price Range
@@ -268,7 +268,6 @@ export default function ShopPage() {
                     onValueChange={(val) => setPriceRange(val)}
                     className="mb-2"
                   />
-                  {/* Mobile price labels in INR */}
                   <div className="flex justify-between text-xs text-muted-foreground">
                     <span>{formatPrice(priceRange[0])}</span>
                     <span>{formatPrice(priceRange[1])}</span>
@@ -286,7 +285,7 @@ export default function ShopPage() {
                 {filteredProducts.length !== 1 ? "s" : ""}
               </p>
               {selectedCategory !== "all" && (
-                <Badge className="rounded-full bg-gold/20 text-gold border-0 text-xs">
+                <Badge className="rounded-full bg-primary/15 text-gold border-0 text-xs">
                   {CATEGORIES.find((c) => c.value === selectedCategory)?.label}
                 </Badge>
               )}

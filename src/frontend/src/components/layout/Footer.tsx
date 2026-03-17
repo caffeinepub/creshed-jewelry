@@ -37,7 +37,7 @@ export default function Footer() {
               to="/"
               className="font-display text-2xl tracking-[0.3em] text-gold font-semibold inline-block mb-4"
             >
-              CRESHED
+              CRUSHED
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-6">
               Luxury jewelry crafted for those who seek the exceptional. Each
@@ -111,7 +111,7 @@ export default function Footer() {
       <div className="border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-muted-foreground">
-            © {year} Creshed. All rights reserved.
+            © {year} Crushed. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground">
             Built with ♥ using{" "}
